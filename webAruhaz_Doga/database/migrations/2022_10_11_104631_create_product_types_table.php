@@ -15,7 +15,7 @@ class CreateProductTypesTable extends Migration
     public function up()
     {//Vitay Zalán
         Schema::create('product_types', function (Blueprint $table) {
-            $table->bigIncrements('type_id');
+            //$table->id('type_id');
             $table->string('name', 40);
             $table->longText('description', 150);
             $table->integer('cost');
