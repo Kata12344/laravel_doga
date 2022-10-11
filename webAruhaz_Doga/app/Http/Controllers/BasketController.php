@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Basket;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Product_type;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -10,52 +13,50 @@ class BasketController extends Controller
     /*GET:*/
 public function index()
 {
-$tasks = response()->json (Basket::all()); response()->json(Basket::all()); return $tasks;
+$baskets = response()->json (Basket::all()); response()->json(Basket::all()); return $baskets;
 } public function show($id)
 {
-$tasks = response()->json (Basket::find($id)); return $tasks;
+$baskets = response()->json (Basket::find($id)); return $baskets;
 }
 
 /*DELETE, POST és PUT:*/
 public function destroy($id)
 {
-Task::find($id) ->delete();
+Basket::find($id) ->delete();
 //return redirect('/task/list');
 } public function store (Request $request)
 {
-$task= new Basket();
-$task->title= $request->title;
-$task->description = $request->description;
-$task->end_date = $request->end_date;
-$task->user_id $request->user_id; = $task->status $request->status;
-
-$task->save();
+$basket= new Basket();
+$basket->item_id = $request->item_id;
+$basket->user_id = $request->user_id;
+$basket->save();
 }
 public function update (Request $request, $id)
 {
-$task= Basket::find($id);
-$task->title= $request->title;
-$task->description = $request->description; $task->end_date $request->end_date; =
-$task->user_id $request->user_id; =
-$task->status $request->status; =
-$task->save();
+$basket= Basket::find($id);
+$basket->item_id = $request->item_id;
+$basket->user_id = $request->user_id; 
+$basket->save();
 }
 
-
-/*public function newView()
+public function newView()
 {
-$users User::all(); return view('task.new', ['users' => $users]);
+    //új rekord rögzítése
+    $users = User::all();
+    $baskets = Basket::all();
+    return view('product.new', ['users' => $users, 'products' => $baskets]);
 }
 public function editView($id)
 {
-$users = User::all();
-$task= Task::find($id);
-return view('task.edit', ['users' => $users, 'task' => $task]);
+    $users = User::all();
+    $baskets = Basket::all();
+    $product = Product::find($id);
+    return view('product.edit', ['users' => $users, 'products' => $baskets, 'basket' => $product]);
 }
 public function listView()
 {
-$tasks Task::all(); =
-return view( 'task.list', ['tasks' => $tasks]);
-}*/
+    $baskets = Basket::all();
+    return view('product.list', ['products' => $baskets]);
+}
 
 }

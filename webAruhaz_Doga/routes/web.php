@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-
-
 });
 
 Route::get('/dashboard', function () {
@@ -30,7 +28,7 @@ Route::middleware(['auth.basic'])->group(function () {
     Route::apiResource('api/products', ProductController::class);
 
     Route::apiResource('api/bakets', BasketController::class);
-    
+
     /*VIEW ahol megjeleníthetem az adatokat */ /* Task-ok listázása /task*/
     Route::get('/product/new', [ProductController::class, 'newView']); //új adat felvétele
     /* Task módosítása /task/edit/1 */
@@ -38,5 +36,11 @@ Route::middleware(['auth.basic'])->group(function () {
     /* Új Task létrehozása /task/create */
     Route::get('/product/list', [ProductController::class, 'listView']);
 
+    /*VIEW ahol megjeleníthetem az adatokat */ /* Task-ok listázása /task*/
+    Route::get('/baskets/new', [BasketController::class, 'newView']); //új adat felvétele
+    /* Task módosítása /task/edit/1 */
+    Route::get('/baskets/edit/{id}', [BasketController::class, 'editView']); // rekord módosítása
+    /* Új Task létrehozása /task/create */
+    Route::get('/baskets/list', [BusketController::class, 'listView']);
 });
-    require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
