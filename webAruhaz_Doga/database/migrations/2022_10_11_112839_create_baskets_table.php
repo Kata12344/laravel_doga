@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('baskets', function (Blueprint $table) {
             $table->bigIncrements('user_id');
             $table->timestamps();
-            $table->foreign('item_id')->references('item_id')->on('products');
+            $table->foreignId('item_id')->references('item_id')->on('products');
            
         });
     }
