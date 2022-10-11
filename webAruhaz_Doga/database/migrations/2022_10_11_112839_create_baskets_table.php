@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('baskets', function (Blueprint $table) {
-            $table->id();
+            $table->id("item_id");
+            $table->id("user_id");
             $table->timestamps();
         });
     }
