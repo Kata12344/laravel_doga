@@ -15,13 +15,14 @@ class CreateProductTypesTable extends Migration
     public function up()
     {//Vitay Zalán
         Schema::create('product_types', function (Blueprint $table) {
-            //$table->id('type_id');
+            $table->bigIncrements('type_id');
+            //$table->foreignId('type_id')->references('type_id')->on('products');
             $table->string('name', 40);
             $table->longText('description', 150);
             $table->integer('cost');
             $table->timestamps();
 
-            $table->foreignId('type_id')->references('type_id')->on('products');
+            
         });
     }
 
