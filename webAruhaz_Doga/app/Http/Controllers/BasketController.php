@@ -39,23 +39,24 @@ $basket->user_id = $request->user_id;
 $basket->save();
 }
 
-
 public function newView()
 {
-$users User::all();
-$baskets =
-return view('basket.new', ['users' => $users]);
+    //új rekord rögzítése
+    $users = User::all();
+    $baskets = Basket::all();
+    return view('product.new', ['users' => $users, 'products' => $baskets]);
 }
 public function editView($id)
 {
-$users = User::all();
-$basket = Basket::find($id);
-return view('basket.edit', ['users' => $users, 'task' => $task]);
+    $users = User::all();
+    $baskets = Basket::all();
+    $product = Product::find($id);
+    return view('product.edit', ['users' => $users, 'products' => $baskets, 'basket' => $product]);
 }
 public function listView()
 {
-$Baskets Basket::all(); =
-return view( 'basket.list', ['tasks' => $tasks]);
+    $baskets = Basket::all();
+    return view('product.list', ['products' => $baskets]);
 }
 
 }
