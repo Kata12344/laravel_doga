@@ -23,10 +23,10 @@ return new class extends Migration
             $table->timestamps();
            
         });
-        Product::create(['type_id'=>1,'date'=>'2002-06-04']);
-        Product::create(['type_id'=>2,'date'=>'2013-11-05']);
-        Product::create(['type_id'=>3,'date'=>'2022-08-24']);
-        Product::create(['type_id'=>4,'date'=>'2017-01-01']);
+        // Product::create(['type_id'=>1,'date'=>'2002-06-04']);
+        // Product::create(['type_id'=>2,'date'=>'2013-11-05']);
+        // Product::create(['type_id'=>3,'date'=>'2022-08-24']);
+        // Product::create(['type_id'=>4,'date'=>'2017-01-01']);
 
 
     }
