@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::middleware(['auth.basic'])->group(function () {
 
     Route::apiResource('api/products', ProductController::class);
 
-    Route::apiResource('api/bakets', ProductController::class);
+    Route::apiResource('api/bakets', BasketController::class);
     
     /*VIEW ahol megjeleníthetem az adatokat */ /* Task-ok listázása /task*/
     Route::get('/product/new', [ProductController::class, 'newView']); //új adat felvétele
