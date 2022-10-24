@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Basket;
-use App\Models\User;
 use App\Models\Product;
+use App\Models\Product_type;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -47,17 +47,19 @@ class ProductController extends Controller
     public function newView()
     {
         //új rekord rögzítése
-        $users = User::all();
         $products = Product::all();
-        return view('product.new', ['users' => $users, 'products' => $products]);
+        $product_types = Product_type::all();
+        return view('product.new', [ 'products' => $products, 'product_types' => $product_types]);
     }
-    public function editView($id)
-    {
-        $users = User::all();
-        $products = Product::all();
-        $basket = Basket::find($id);
-        return view('product.edit', ['users' => $users, 'products' => $products, 'basket' => $basket]);
-    }
+
+    // public function editView($id)
+    // {
+    //     $users = User::all();
+    //     $products = Product::all();
+    //     $basket = Basket::find($id);
+    //     return view('product.edit', ['users' => $users, 'products' => $products, 'basket' => $basket]);
+    // }
+
     public function listView()
     {
         $products = Product::all();

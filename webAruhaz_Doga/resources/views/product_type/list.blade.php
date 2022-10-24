@@ -1,4 +1,4 @@
-@foreach ($baskets as $basket)
+@foreach ($product_types as $product_type)
 <form action="/api/baskets/{{$basket->id}}" method="post">
 {{csrf_field()}}
 {{method_field('GET')}}

@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Basket;
-use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,11 +15,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('baskets', function (Blueprint $table) {
-            $table->bigIncrements('user_id');
-            $table->timestamps();
+            $table->id();
             $table->foreignId('item_id')->references('item_id')->on('products');
-           
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
+
+        Basket::create(['item_id'=>1,'user_id'=>3]);
+        Basket::create(['item_id'=>2,'user_id'=>2]);
+        Basket::create(['item_id'=>3,'user_id'=>1]);
     }
 
     /**
